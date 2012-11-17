@@ -1,0 +1,47 @@
+http://www.xiami.com/song/playlist/id/10181268/type/3
+
+playcollect('10181268')
+
+function playcollect(list_id){
+	addSongs(escape("/song/playlist/id/"+list_id+"/type/3"));
+};
+
+function addSongs(str){
+	thisMovie('trans').addSongs(str);
+}
+
+function thisMovie(movieName){
+	if (navigator.appName.indexOf("Microsoft") != -1) {
+		if(navigator.appVersion.match(/9./i)!="9."){
+			return window[movieName];
+		}else{
+			return document[movieName];
+		}
+	} else {
+		return document[movieName];
+	}
+	//return navigator.appName.indexOf("Microsoft") != -1 ? window[movieName] : document[movieName];
+};
+
+
+
+
+
+5h3%.i%51F813tA2x.2%31_8t%FinF2331.p2fae3F%23m%F1mt51212p
+
+
+
+5
+h3%.i%51F813
+tA2x.2%31_8
+t%FinF2331.
+p2fae3F%23m
+%F1mt51212p
+
+http%3A%2F%2Ff1.xiami.net%2F355%2F1133%2F13218_13218.mp3
+http://f1.xiami.net/355/1133/13218_13218.mp3
+
+
+curl -A "Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_3_3 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8J2 Safari/6533.18.5" -o hehe.mp3 http://f1.xiami.net/355/1133/13218_13218.mp3
+
+
