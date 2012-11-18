@@ -1,7 +1,7 @@
 Let enjoy music ;-)
 
 ###Pre-requirement
-#1.	Install libcurl binding for RUBY
+Install libcurl binding for RUBY
 	
 	sudo apt-get install libcurl3 libcurl3-gnutls libcurl4-openssl-dev
 	sudo gem install curb
@@ -15,6 +15,7 @@ Let enjoy music ;-)
 http://www.xiami.com/song/showcollect/id/5173283
 
 Run:
+
 	ruby fetch.rb 5173283
 
 
