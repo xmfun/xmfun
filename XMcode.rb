@@ -33,6 +33,8 @@ module XMcode
         
         result = result.gsub('%2F','/')
         result = result.gsub('%3A',':')
+        result = result.gsub('%5E','0')
+        result = result.gsub('%25','%')
         
         return result
     end 
