@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'net/http'
 require 'curb'
-require 'xmlsimple'
 require 'rexml/document'
 
 
@@ -12,7 +11,8 @@ require "XMcode.rb"
 
 #Get XML
 
-url="http://www.xiami.com/song/playlist/id/10181268/type/3"
+#url="http://www.xiami.com/song/playlist/id/7273826/type/3"
+url="http://www.xiami.com/song/playlist/id/"+ARGV[0].to_s+"/type/3"
 xml = Net::HTTP.get_response(URI.parse(url)).body
 
 
