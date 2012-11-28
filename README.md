@@ -1,3 +1,7 @@
+xmfun
+=========
+
+Yet Another Xiami Music Downloader
 Let enjoy music ;-)
 
 ###Pre-requirement
