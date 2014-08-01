@@ -1,42 +1,31 @@
+require 'cgi'
+
 module XMcode
+  def self.decode(input)
+    text = input[1..-1]
+    row = input[0].to_i
+    col = text.size / row - 1
+    reminder = text.size % row
+    result = []
+    start = 0
 
-    def inilialize()
+    row.times do |r|
+      if reminder == 0
+        result << text[start..(start+col)]
+        start = start + col + 1
+      else
+        result << text[start..(start+col+1)]
+        start = start + col + 2
+      end
+      if reminder != 0
+        reminder = reminder - 1
+      end
     end
-    
-    def XMcode.decode(input)
-        line=input[0,1].to_i
-        input=input[1..-1]
-        col = input.length / line
-        remainder= input.length%line
-        result=''
-        base=0
-        box={}
-    
-        for id in 1..line 
-	        if remainder > 0
-                box[id]=input[base..base+col]
-             base=base+col+1
-             #puts remainder
-             else
-                box[id]=input[base..base+col-1]
-	            base=base+col
-            end
-            remainder=remainder-1
-            #puts box[id] 
-        end    
-    
-        for index in 0..col
-            for id in 1..line
-                result<<box[id][index,1].to_s
-            end
-        end
-        
-        result = result.gsub('%2F','/')
-        result = result.gsub('%3A',':')
-        result = result.gsub('%5E','0')
-        result = result.gsub('%25','%')
-        
-        return result
-    end 
-end           
 
+    tmp = (0..(result[0].size-1)).to_a.map do |n|
+      result.map{|i| i[n]}.join
+    end.join
+
+    CGI::unescape(tmp).gsub('^', '0')
+  end
+end

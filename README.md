@@ -3,7 +3,7 @@ xmfun
 
 Yet Another Xiami Music Downloader
 
-Let enjoy music ;-)
+Let's enjoy music ;-)
 
 ###Pre-requirement
 Install libcurl binding for RUBY

@@ -1,71 +1,60 @@
-require 'rubygems'
-require 'net/http'
-require 'curb'
-require 'rexml/document'
+#!/usr/bin/ruby
+require 'open-uri'
+require 'nokogiri'
+require 'clap'
+require_relative "XMcode"
 
 
-$: << "#{File.dirname(__FILE__)}"
-$:.unshift(File.expand_path(File.join(File.dirname(__FILE__))))
+#if ARGV[0].to_i == 0
+#url="http://www.xiami.com/song/playlist/id/"+ARGV[2].to_s+"/type/3"
+#else
+#url="http://www.xiami.com/song/playlist/id/"+ARGV[2].to_s+"/object_name/default/object_id/0"
+#end
+HELP = <<-HELP
+Usage: ruby xmfun.rb
+  -c cid  -- download a music collect
+  -s sid  -- download a single song
+  -d path -- path to save your music
+  -v      -- show version
+  -h      -- show help message
 
-require "XMcode.rb"
+Example:  Download Collect with ID 10181268 and save to current path)
+          ruby xmfun.rb -c 10181268 -d .
+HELP
 
-# quit unless our script gets two command line arguments
-unless ARGV.length > 1
-	puts "-----------------------------------------------------------------"
-	puts "Usage: ruby xmfun.rb $typeID [$Lyric] $ID\n"
-	puts "typeID: "
-	puts "       0: Download Music Collect"
-	puts "       1: Download Single Song"
-	puts "ID:"
-	puts "		 Collect ID or Song ID"
-	puts "Lyric: "
-	puts "		 0: Only download music"
-	puts "		 1: Download music with lyric"
-	puts "Example: ruby xmfun.rb 0 0 10181268 (Download Collect with ID 10181268 without lyrics)"
-  	puts "-----------------------------------------------------------------"
-	exit
-end
+url = ''
+dst = '.'
 
-#Get XML
-if ARGV[0].to_i == 0
-	url="http://www.xiami.com/song/playlist/id/"+ARGV[2].to_s+"/type/3"
+Clap.run ARGV,
+  "-c" => lambda { |collect_id| url = "http://www.xiami.com/song/playlist/id/#{collect_id}/type/3" },
+  "-s" => lambda { |song_id| url = "http://www.xiami.com/song/playlist/id/#{song_id}/object_name/default/object_id/0" },
+  "-d" => lambda { |d| dst = d },
+  "-v" => lambda { puts "0.0.1" },
+  "-h" => lambda { puts HELP }
+
+if Dir.exist?(dst)
+  Dir.chdir(dst)
 else
-	url="http://www.xiami.com/song/playlist/id/"+ARGV[2].to_s+"/object_name/default/object_id/0"
+  Dir.mkdir(dst)
+  Dir.chdir(dst)
 end
 
-xml = Net::HTTP.get_response(URI.parse(url)).body
+puts url
 
+f = Nokogiri::XML(open(url, "Client-IP" => "220.181.111.168"))
 
-xmldoc = REXML::Document.new(xml)
+f.css("track").each do |track|
+  album    = track.css('album_name').text
+  artist   = track.css('artist').text
+  lyric    = track.css('lyric').text
+  title    = track.css('title').text
+  location = track.css('location').text
 
-xmldoc.elements.each("playlist/trackList/track") do |track|
-        title    = track.elements['title'].text
-		album    = track.elements['album_name'].text
-        artist   = track.elements['artist'].text
-        location = track.elements['location'].text
-		lyric	 = track.elements['lyric'].text
-        print title+" "
-        mp3 = XMcode.decode(location)
-        
-        c = Curl::Easy.new(mp3) do |curl| 
-            curl.headers["User-Agent"] = "Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_3_3 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8J2 Safari/6533.18.5"
-            curl.verbose = false
-            curl.on_body {
-            |d| f = File.open(title+"_"+artist+".mp3", 'a') {|f| f.write d}
-        }
-        end
-        c.perform
-        
-if ARGV[1].to_i==1
-		c = Curl::Easy.new(lyric) do |curl|
-		curl.headers["User-Agent"] = "Mozilla/5.0 (iPhone; U; CPU iPhone     OS 4_3_3 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Ver    sion/5.0.2 Mobile/8J2 Safari/6533.18.5"
- 		curl.verbose = false
- 		curl.on_body {
- 			|d| f = File.open(title+"_"+artist+".lrc", 'a') {|f| f.write d}
- 		}
-		end
- 		c.perform
+  mp3 = XMcode.decode(location)
+
+  uri = URI.parse(mp3)
+  uri.open(:content_length_proc => lambda { |content_length| puts content_length },
+           :progress_proc => lambda {|size| }) do |f|
+    File.open("#{title}_#{artist}.mp3", 'w') { |mp3| mp3.write(f.read) }
+  end
 end
-        
-end
-
