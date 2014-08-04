@@ -11,6 +11,7 @@ GEM
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
+    ruby-mp3info (0.8.4)
     slop (3.5.0)
 
 PLATFORMS
@@ -20,3 +21,4 @@ DEPENDENCIES
   clap
   nokogiri
   pry
+  ruby-mp3info
