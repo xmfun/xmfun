@@ -1,29 +1,38 @@
-xmfun
-=========
+# XMfun
 
 Yet Another Xiami Music Downloader
 
-Let's enjoy music ;-)
+## Installation
 
-###Pre-requirement
-Install libcurl binding for RUBY
-	
-	sudo apt-get install libcurl3 libcurl3-gnutls libcurl4-openssl-dev
-	sudo gem install curb
- 
+Add this line to your application's Gemfile:
 
-###Useage:
+```ruby
+gem 'xmfun'
+```
 
-	ruby fetch.rb $CollectID
+And then execute:
 
-###For example:
-http://www.xiami.com/song/showcollect/id/5173283
+    $ bundle
 
-Run:
+Or install it yourself as:
 
-	ruby fetch.rb 5173283
+    $ gem install xmfun
 
+## Usage
 
+```
+xmfun
+  -c cid  -- download a music collect
+  -s sid  -- download a single song
+  -d path -- path to save your music
+  -v      -- show version
+  -h      -- show help message
+```
 
-###TODO
-Make it user-friendly
+## Contributing
+
+1. Fork it ( https://github.com/ipmsteven/xmfun/fork )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Pull Request
