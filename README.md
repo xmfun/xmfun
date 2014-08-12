@@ -1,4 +1,6 @@
 # XMfun
+[![Build
+Status](https://travis-ci.org/ipmsteven/xmfun.svg?branch=master)](https://travis-ci.org/ipmsteven/xmfun)
 
 Yet Another Xiami Music Downloader
 
