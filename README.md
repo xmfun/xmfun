@@ -1,6 +1,8 @@
 # XMfun
 [![Build
 Status](https://travis-ci.org/ipmsteven/xmfun.svg?branch=master)](https://travis-ci.org/ipmsteven/xmfun)
+[![Code
+Climate](https://codeclimate.com/github/ipmsteven/xmfun/badges/gpa.svg)](https://codeclimate.com/github/ipmsteven/xmfun)
 
 Yet Another Xiami Music Downloader
 

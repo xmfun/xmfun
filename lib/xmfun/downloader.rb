@@ -18,8 +18,13 @@ module Xmfun
       end
 
       f = Nokogiri::XML(open(url, "Client-IP" => "220.181.111.168"))
-      progress = ProgressBar.create(:title => "The Progress", :total => f.css("track").size )
-      Parallel.map(f.css("track"), :finish => lambda { |item, i, result| progress.increment }) do |track|
+      progress = ProgressBar.create( :title => "Progress",
+                                     :total => f.css("track").size,
+                                     :format => '%a %bᗧ%i %p%% %t',
+                                     :progress_mark  => ' ',
+                                     :remainder_mark => '･'
+                                   )
+      Parallel.map( f.css("track"), :in_threads => Parallel.processor_count, :finish => lambda { |item, i, result| progress.increment } ) do |track|
         album     = track.css('album_name').text
         artist    = track.css('artist').text
         lyric     = track.css('lyric').text
