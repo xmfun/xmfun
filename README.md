@@ -1,4 +1,6 @@
 # XMfun
+[![Gem
+Version](https://badge.fury.io/rb/xmfun.svg)](http://badge.fury.io/rb/xmfun)
 [![Build
 Status](https://travis-ci.org/ipmsteven/xmfun.svg?branch=master)](https://travis-ci.org/ipmsteven/xmfun)
 [![Code
@@ -26,8 +28,7 @@ Or install it yourself as:
 
 ```
 xmfun
-  -c cid  -- download a music collect
-  -s sid  -- download a single song
+  -u url  -- url on xiami website
   -d path -- path to save your music
   -v      -- show version
   -h      -- show help message
