@@ -20,6 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "clap", "~> 1.0.0"
   spec.add_dependency "nokogiri", "~> 1.6.3.1"
+  spec.add_dependency "nori", "~> 2.4.0"
   spec.add_dependency "parallel", "~> 1.2.2"
   spec.add_dependency "ruby-mp3info", "~> 0.8.4"
   spec.add_dependency "ruby-progressbar", "~> 1.5.1"
@@ -28,4 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.3.2"
   spec.add_development_dependency "rspec", "~> 3.0.0"
   spec.add_development_dependency "pry", "~> 0.10.0"
+  if RUBY_VERSION =~ /^2\./
+    spec.add_development_dependency "pry-byebug", "~> 1.3.3"
+  end
 end

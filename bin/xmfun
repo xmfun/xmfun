@@ -7,8 +7,7 @@ url = ''
 dst = '.'
 
 Clap.run ARGV,
-  "-c" => lambda { |collect_id| url = "http://www.xiami.com/song/playlist/id/#{collect_id}/type/3" },
-  "-s" => lambda { |song_id| url = "http://www.xiami.com/song/playlist/id/#{song_id}/object_name/default/object_id/0" },
+  "-u" => lambda { |xm_url| url = Xmfun::Util::UrlParser.parse(xm_url) },
   "-d" => lambda { |d| dst = d },
   "-v" => lambda { puts Xmfun::VERSION },
   "-h" => lambda { puts Xmfun.help }
