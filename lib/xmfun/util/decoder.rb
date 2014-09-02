@@ -1,35 +1,16 @@
 # -*- encoding : utf-8 -*-
 
 require 'cgi'
+require 'active_support/core_ext/array/grouping'
 
 module Xmfun
   module Util
     class Decoder
       def self.decode(input)
-        text = input[1..-1]
+        text = input[1..-1].chars.to_a
         row = input[0].to_i
-        col = text.size / row - 1
-        reminder = text.size % row
-        result = []
-        start = 0
 
-        row.times do |r|
-          if reminder == 0
-            result << text[start..(start+col)]
-            start = start + col + 1
-          else
-            result << text[start..(start+col+1)]
-            start = start + col + 2
-          end
-          if reminder != 0
-            reminder = reminder - 1
-          end
-        end
-
-        tmp = (0..(result[0].size-1)).to_a.map do |n|
-          result.map{|i| i[n]}.join
-        end.join
-
+        tmp = text.in_groups(row).transpose.join
         CGI::unescape(tmp).gsub('^', '0')
       end
     end
