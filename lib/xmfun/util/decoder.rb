@@ -7,8 +7,8 @@ module Xmfun
   module Util
     class Decoder
       def self.decode(input)
-        text = input[1..-1].chars.to_a
-        row = input[0].to_i
+        input.match(/^(\d+)/)
+        row, text = $1.to_i, $'.chars.to_a
 
         tmp = text.in_groups(row).transpose.join
         CGI::unescape(tmp).gsub('^', '0')
