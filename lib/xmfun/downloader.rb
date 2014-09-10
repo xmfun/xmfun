@@ -8,7 +8,7 @@ require 'ruby-progressbar'
 
 module Xmfun
   class Downloader
-    def self.download(url, dst)
+    def self.download(url, dst = ".")
       make_dst(dst)
 
       tracks = Nokogiri::XML(open(url, "Client-IP" => "220.181.111.168")).css("track")

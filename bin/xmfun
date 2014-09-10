@@ -1,15 +1,42 @@
 #!/usr/bin/env ruby
-
 require 'clap'
 require 'xmfun'
+
+if ARGV.empty?
+  puts Xmfun.main_help
+  exit
+end
 
 url = ''
 dst = '.'
 
+download_proc = lambda do |option|
+  if option == '-h'
+    puts Xmfun.download_help
+  else
+    unless(url = Xmfun::Util::UrlParser.parse(option))
+      puts "\e[31mPlease provide valid URL\e[0m"
+      exit
+    end
+  end
+end
+
+begin
 Clap.run ARGV,
-  "-u" => lambda { |xm_url| url = Xmfun::Util::UrlParser.parse(xm_url) },
-  "-d" => lambda { |d| dst = d },
-  "-v" => lambda { puts Xmfun::VERSION },
-  "-h" => lambda { puts Xmfun.help }
+  "download"   => download_proc,
+  "update"     => lambda { system("gem update xmfun") },
+  "help"       => lambda { puts Xmfun.main_help; exit},
+  "--help"     => lambda { puts Xmfun.mian_help; exit},
+  "version"    => lambda { puts Xmfun::VERSION; exit},
+  "--version"  => lambda { puts Xmfun::VERSION; exit},
+
+  "-u" => lambda { |xmurl|  url = Xmfun::Util::UrlParser.parse(xm_url) },
+  "-v" => lambda { puts Xmfun::VERSION; exit},
+  "-h" => lambda { puts Xmfun.main_help; exit},
+  "-d" => lambda { |d| dst = d }
+rescue ArgumentError
+  puts "\e[31mInvalid Usage\e[0m"
+  puts Xmfun.main_help
+end
 
 Xmfun::Downloader.download(url, dst) unless url.empty?

@@ -10,16 +10,36 @@ require 'xmfun/downloader'
 
 
 module Xmfun
-  def self.help
-<<-HELP
-Usage: ruby xmfun.rb
-  -u url  -- url on xiami website
-  -d path -- path to save your music
-  -v      -- show version
-  -h      -- show help message
+  def self.main_help
+<<-EOS
+Usage: xmfun <command> [<args>]
 
-Example:  Download song from "http://www.xiami.com/song/383221" and save to 'xuwei' folder
-          xmfun -u http://www.xiami.com/song/383221 -d xuwei
-HELP
+  -v, --version       Print the version
+  -h, --help          Print this help
+
+Common commands:
+  download            Download the mp3 files given an arg of url
+  update              Update xmfun to the newest version
+  version             Print the version
+  help                Print this help
+
+Example:
+  xmfun download http://www.xiami.com/song/3378080
+
+More info:
+  xmfun <command> -h
+EOS
+  end
+
+  def self.download_help
+<<-EOS
+Usage:
+  xmfun download URL
+  xmfun download URL -d DESINATION_FOLDER
+
+Example:
+  xmfun download http://www.xiami.com/song/3378080
+  xmfun download http://www.xiami.com/song/3378080 -d pink
+EOS
   end
 end
