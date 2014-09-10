@@ -6,7 +6,7 @@ require 'xmfun/version'
 Gem::Specification.new do |spec|
   spec.name          = "xmfun"
   spec.version       = Xmfun::VERSION
-  spec.authors       = ["ipmsteven"]
+  spec.authors       = ["ipmsteven", "Polo"]
   spec.email         = ["steven.lyl147@gmail.com"]
   spec.description   = %q{Yet another xiami music downloader}
   spec.summary       = %q{Yet another xiami music downloader}
