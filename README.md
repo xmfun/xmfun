@@ -1,4 +1,5 @@
 # XMfun
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/ipmsteven/xmfun?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![Gem
 Version](https://badge.fury.io/rb/xmfun.svg)](http://badge.fury.io/rb/xmfun)
 [![Build
