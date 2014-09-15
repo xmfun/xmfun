@@ -1,15 +1,4 @@
 #!/usr/bin/env ruby
-
-require 'clap'
 require 'xmfun'
 
-url = ''
-dst = '.'
-
-Clap.run ARGV,
-  "-u" => lambda { |xm_url| url = Xmfun::Util::UrlParser.parse(xm_url) },
-  "-d" => lambda { |d| dst = d },
-  "-v" => lambda { puts Xmfun::VERSION },
-  "-h" => lambda { puts Xmfun.help }
-
-Xmfun::Downloader.download(url, dst) unless url.empty?
+Xmfun::CLI.start(ARGV)
