@@ -10,6 +10,7 @@ matrix:
   allow_failures:
     - rvm: jruby
     - rvm: rbx
+    - rvm: ruby-head
 notifications:
   webhooks:
     urls:
