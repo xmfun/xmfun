@@ -1,8 +1,15 @@
 language: ruby
 rvm:
+  - ruby-head
   - 2.1.2
   - 2.0.0
   - 1.9.3
+  - jruby
+  - rbx
+matrix:
+  allow_failures:
+    - rvm: jruby
+    - rvm: rbx
 notifications:
   webhooks:
     urls:
