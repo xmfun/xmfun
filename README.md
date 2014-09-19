@@ -28,11 +28,22 @@ Or install it yourself as:
 ## Usage
 
 ```
-xmfun
-  -u url  -- url on xiami website
-  -d path -- path to save your music
-  -v      -- show version
-  -h      -- show help message
+Usage: xmfun <command> [<args>]
+
+  -v, --version       Print the version
+  -h, --help          Print this help
+
+Common commands:
+  download            Download the mp3 files given an arg of url
+  update              Update xmfun to the newest version
+  version             Print the version
+  help                Print this help
+
+Example:
+  xmfun download http://www.xiami.com/song/3378080
+
+More info:
+  xmfun <command> -h
 ```
 
 ## Contributing
