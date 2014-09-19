@@ -10,7 +10,9 @@ module Xmfun
         row, text = strtok(input)
 
         tmp = text.in_groups(row).transpose.join
-        CGI::unescape(tmp).gsub('^', '0')
+        CGI::unescape(tmp).gsub("^", "0")
+      rescue ArgumentError
+        false
       end
 
       def self.strtok(s)
