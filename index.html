@@ -1,37 +1,40 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-
     <title>xmfun by ipmsteven</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
-
   <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">xmfun</h1>
+        <p class="header">Yet Another Xiami Music Downloader</p>
 
-    <header>
-      <div class="container">
-        <h1>xmfun</h1>
-        <h2>Yet Another Xiami Music Downloader</h2>
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/ipmsteven/xmfun/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/ipmsteven/xmfun/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/ipmsteven/xmfun">View On GitHub</a></li>
+        </ul>
 
-        <section id="downloads">
-          <a href="https://github.com/ipmsteven/xmfun/zipball/master" class="btn">Download as .zip</a>
-          <a href="https://github.com/ipmsteven/xmfun/tarball/master" class="btn">Download as .tar.gz</a>
-          <a href="https://github.com/ipmsteven/xmfun" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-        </section>
-      </div>
-    </header>
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/ipmsteven">ipmsteven</a></p>
 
-    <div class="container">
-      <section id="main_content">
+
+      </header>
+      <section>
         <h1>
-<a name="xmfun" class="anchor" href="#xmfun"><span class="octicon octicon-link"></span></a>xmfun</h1>
+<a name="xmfun" class="anchor" href="#xmfun"><span class="octicon octicon-link"></span></a>XMfun</h1>
 
-<p><a href="http://badge.fury.io/rb/xmfun"><img src="https://badge.fury.io/rb/xmfun.svg" alt="Gem
+<p><a href="https://gitter.im/ipmsteven/xmfun?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Gitter"></a>
+<a href="http://badge.fury.io/rb/xmfun"><img src="https://badge.fury.io/rb/xmfun.svg" alt="Gem
 Version"></a>
 <a href="https://travis-ci.org/ipmsteven/xmfun"><img src="https://travis-ci.org/ipmsteven/xmfun.svg?branch=master" alt="Build
 Status"></a>
@@ -61,11 +64,22 @@ Climate"></a></p>
 <h2>
 <a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
 
-<pre><code>xmfun
-  -u url  -- url on xiami website
-  -d path -- path to save your music
-  -v      -- show version
-  -h      -- show help message
+<pre><code>Usage: xmfun &lt;command&gt; [&lt;args&gt;]
+
+  -v, --version       Print the version
+  -h, --help          Print this help
+
+Common commands:
+  download            Download the mp3 files given an arg of url
+  update              Update xmfun to the newest version
+  version             Print the version
+  help                Print this help
+
+Example:
+  xmfun download http://www.xiami.com/song/3378080
+
+More info:
+  xmfun &lt;command&gt; -h
 </code></pre>
 
 <h2>
@@ -79,9 +93,12 @@ Climate"></a></p>
 <li>Create a new Pull Request</li>
 </ol>
       </section>
+      <footer>
+        <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
     </div>
-
-              <script type="text/javascript">
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		          <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
