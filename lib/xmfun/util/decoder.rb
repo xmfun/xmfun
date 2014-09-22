@@ -7,10 +7,14 @@ module Xmfun
   module Util
     class Decoder
       def self.decode(input)
-        row, text = strtok(input)
+        begin
+          row, text = strtok(input)
 
-        tmp = text.in_groups(row).transpose.join
-        CGI::unescape(tmp).gsub('^', '0')
+          tmp = text.in_groups(row).transpose.join
+          CGI::unescape(tmp).gsub('^', '0')
+        rescue ArgumentError
+          false
+        end
       end
 
       def self.strtok(s)
