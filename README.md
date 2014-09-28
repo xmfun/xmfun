@@ -1,6 +1,6 @@
 # XMfun
 [![Gem Version](https://badge.fury.io/rb/xmfun.svg)](http://badge.fury.io/rb/xmfun)
-[![Build Status](https://travis-ci.org/ipmsteven/xmfun.svg?branch=master)](https://travis-ci.org/ipmsteven/xmfun)
+[![Build Status](https://travis-ci.org/xmfun/xmfun.svg?branch=master)](https://travis-ci.org/xmfun/xmfun)
 [![Test Coverage](https://codeclimate.com/github/ipmsteven/xmfun/badges/coverage.svg)](https://codeclimate.com/github/ipmsteven/xmfun)
 [![Code Climate](https://codeclimate.com/github/ipmsteven/xmfun/badges/gpa.svg)](https://codeclimate.com/github/ipmsteven/xmfun)
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/ipmsteven/xmfun?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
