@@ -26,7 +26,7 @@ module Xmfun
       end
 
       def self.get_data(url)
-        open(url).read
+        open(url).read rescue ''
       end
     end
   end
