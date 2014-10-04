@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-ENV['CODECLIMATE_REPO_TOKEN'] = 'd819a1100b1567adf763b9f6b0e1af83dcb59a4bf5c3534748ed32e3bb6818f4'
+ENV['CODECLIMATE_REPO_TOKEN'] = 'a09a4e0d33ce9f1ae6bbcbd66b6f9ba1967312412203d8936caa270ed409a4eb'
 require 'codeclimate-test-reporter'
 
 CodeClimate::TestReporter.start
