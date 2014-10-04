@@ -9,9 +9,9 @@ module Xmfun
     class Mp3Tagger
       def self.tag(track)
         Mp3Info.open track.file_name do |m|
-          m.tag.artist = track.artist
-          m.tag.title  = track.title
-          m.tag.album  = track.album
+          m.tag.artist ||= track.artist
+          m.tag.title  ||= track.title
+          m.tag.album  ||= track.album_name
 
           m.tag2["USLT"] = get_lyric(track.lyric)
           m.tag2.remove_pictures

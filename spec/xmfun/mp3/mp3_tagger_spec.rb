@@ -13,7 +13,7 @@ module Xmfun
         before do
           @track = OpenStruct.new(
             'artist'    => 'polo',
-            'album'     => 'smartisan',
+            'album_name'     => 'smartisan',
             'title'     => 'I love this world',
             'file_name' => 'born_to_be_proud.mp3',
             'lyric'     => 'I love this world......',
@@ -22,6 +22,10 @@ module Xmfun
           yielded_file = double('yielded_file')
           tag_mock     = double('tag')
           tag2_mock    = double('tag2')
+
+          allow(tag_mock).to receive(:artist).and_return(nil)
+          allow(tag_mock).to receive(:title).and_return(nil)
+          allow(tag_mock).to receive(:album).and_return(nil)
 
           allow(tag_mock).to receive(:artist=).with('polo')
           allow(tag_mock).to receive(:title=).with('I love this world')
