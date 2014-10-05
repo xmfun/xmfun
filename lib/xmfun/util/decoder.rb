@@ -1,7 +1,6 @@
 # -*- encoding : utf-8 -*-
 
 require 'cgi'
-require 'active_support/core_ext/array/grouping'
 
 module Xmfun
   module Util
