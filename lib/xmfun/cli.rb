@@ -4,47 +4,38 @@ require 'clap'
 
 module Xmfun
   class CLI
-    extend Xmfun::Util::Helper
-
     def self.start(argv)
-      if argv.empty?
-        puts main_help
-        exit
-      end
-
-      url = ''
-      dst = '.'
-
-      download_proc = lambda do |option|
-        if option == '-h'
-          puts download_help
-        else
-          unless(url = Xmfun::Util::UrlParser.parse(option))
-            puts "\e[31mPlease provide valid URL\e[0m"
-            exit
-          end
-        end
-      end
+      argv_check(argv)
 
       begin
-        Clap.run argv,
-          "download"   => download_proc,
-          "update"     => lambda { system("gem update xmfun") },
-          "help"       => lambda { puts main_help; exit },
-          "--help"     => lambda { puts main_help; exit },
-          "version"    => lambda { puts Xmfun::VERSION; exit },
-          "--version"  => lambda { puts Xmfun::VERSION; exit },
-
-          "-u" => lambda { |xmurl|  url = Xmfun::Util::UrlParser.parse(xm_url) },
-          "-v" => lambda { puts Xmfun::VERSION; exit},
-          "-h" => lambda { puts main_help; exit},
-          "-d" => lambda { |d| dst = d }
+        Clap.run argv, tasks
       rescue ArgumentError
         puts "\e[31mInvalid Usage\e[0m"
-        puts main_help
+        puts help
       end
 
-      Xmfun::Util::Downloader.download(url, dst) unless url.empty?
+      go!
+    end
+
+    private
+
+    def self.load_task_manager
+      Xmfun::Util::TaskManager.instance
+    end
+
+    def self.task_manager
+      @task_manager ||= load_task_manager
+    end
+
+    def self.argv_check(argv)
+      if argv.empty?
+        puts help
+        exit
+      end
+    end
+
+    def self.method_missing(name, *args, &block)
+      task_manager.send(name, *args, &block)
     end
   end
 end
