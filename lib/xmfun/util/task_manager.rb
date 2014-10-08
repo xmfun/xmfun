@@ -61,7 +61,7 @@ module Xmfun
       end
 
       def go!
-        Xmfun::Util::Downloader.download(_url, _dst) unless _url.empty?
+        Xmfun::Download::DownloaderManager.new(_url, _dst).start unless _url.empty?
       end
     end
   end
