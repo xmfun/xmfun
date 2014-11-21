@@ -29,8 +29,8 @@ module Xmfun
 
       private
 
-      def fetch_track_list(url, proxy)
-        Nokogiri::XML(open(url, :proxy => proxy)).css("track")
+      def fetch_track_list(url, http_proxy)
+        Nokogiri::XML(open(url, proxy: http_proxy)).css("track")
       end
 
       def make_dst(dst)
