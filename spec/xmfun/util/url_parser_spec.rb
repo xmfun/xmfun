@@ -33,11 +33,11 @@ module Xmfun
       end
 
       describe ".uri?" do
-        it "#should return true given a valid uri otherwise return false" do
+        it "#should return matched uri given a valid uri otherwise return nil" do
           valid_uri   = "http://www.xiami.com/song/3446250?from=search_popup_song"
           invalid_uri = "this is an invalid url"
 
-          expect(@url_parser.uri?(valid_uri)).to be 0
+          expect(@url_parser.uri?(valid_uri)).to eq valid_uri
           expect(@url_parser.uri?(invalid_uri)).to be nil
         end
       end
