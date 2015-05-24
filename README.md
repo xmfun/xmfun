@@ -3,6 +3,8 @@
 [![Build Status](https://travis-ci.org/xmfun/xmfun.svg?branch=master)](https://travis-ci.org/xmfun/xmfun)
 [![Test Coverage](https://codeclimate.com/github/xmfun/xmfun/badges/coverage.svg)](https://codeclimate.com/github/xmfun/xmfun)
 [![Code Climate](https://codeclimate.com/github/xmfun/xmfun/badges/gpa.svg)](https://codeclimate.com/github/xmfun/xmfun)
+[![Dependency
+Status](https://gemnasium.com/xmfun/xmfun.svg)](https://gemnasium.com/xmfun/xmfun)
 
 Yet Another Xiami Music Downloader
 
