@@ -25,14 +25,14 @@ module Xmfun
 				refute @decoder.decode(location)
 			end
 
-			def strtok__return_an_array
+			def test_strtok__return_an_array
 				location = "8h2fmF%2956mtDe%fc185utFii12F%65ph3e5d24%Elt%l.%F35233_%4Ece%5-lp2ec272E74%k57e235E%%F.oF1%%123eE2eefE%53mxm16527_Fyd%6ab75EA5i%69EF_la%c52d88E-%.a29%333.u38E6a-8%n"
         expected = [8, location[1..-1].chars.to_a]
 
         assert_equal @decoder.strtok(location), expected
 			end
 
-			def strtok__raise_exception_with_invalid_url
+			def test_strtok__raise_exception_with_invalid_url
 				location   = "h2fmF%2956mtDe%fc185utFii12F%65ph3e5d24%Elt%l.%F35233_%4Ece%5-lp2ec272E74%k57e235E%%F.oF1%%123eE2eefE%53mxm16527_Fyd%6ab75EA5i%69EF_la%c52d88E-%.a29%333.u38E6a-8%n"
         expect_msg = "invalid input #{location}"
 
