@@ -1,4 +1,3 @@
-require 'minitest/autorun'
 require 'mini_test_helper'
 
 module Xmfun
