@@ -1,17 +1,17 @@
 require 'mini_test_helper'
 
 module Xmfun
-	module Util
-		class TestHelper < Minitest::Test
-			class DummyClass
-			end
+  module Util
+    class TestHelper < Minitest::Test
+      class DummyClass
+      end
 
-			def setup
-				@dummy = DummyClass.new
-				@dummy.extend Xmfun::Util::Helper
-			end
+      def setup
+        @dummy = DummyClass.new
+        @dummy.extend Xmfun::Util::Helper
+      end
 
-			def test_main_help__return_main_help_information
+      def test_main_help__return_main_help_information
         expected_help_info = <<-EOS
 Usage: xmfun <command> [<args>]
 
@@ -32,10 +32,10 @@ More info:
         EOS
 
         assert_equal @dummy.main_help, expected_help_info
-			end
+      end
 
-			def test_download_help__return_download_help_information
-				expected_help_info = <<-EOS
+      def test_download_help__return_download_help_information
+        expected_help_info = <<-EOS
 Usage:
   xmfun download URL
   xmfun download URL -d DESINATION_FOLDER
@@ -46,7 +46,7 @@ Example:
         EOS
 
         assert_equal @dummy.download_help, expected_help_info
-			end
-		end
-	end
+      end
+    end
+  end
 end
