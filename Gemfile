@@ -2,4 +2,8 @@ source "https://rubygems.org"
 
 gemspec
 
-gem 'codeclimate-test-reporter', group: :test, require: nil
+group :development, :test do
+	gem 'minitest'
+	gem 'mocha'
+	gem 'codeclimate-test-reporter'
+end
