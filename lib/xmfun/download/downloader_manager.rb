@@ -11,10 +11,10 @@ module Xmfun
     class DownloaderManager
       attr_accessor :track_list, :downloader
 
-      def initialize(url, dst = ".")
+      def initialize(url, dst = ".", proxy)
         make_dst(dst)
 
-        @track_list = fetch_track_list(url)
+        @track_list = fetch_track_list(url, proxy)
 
         if @track_list.size > 1
           @downloader = CollectDownloader.new
@@ -29,8 +29,8 @@ module Xmfun
 
       private
 
-      def fetch_track_list(url)
-        Nokogiri::XML(open(url, "Client-IP" => "220.181.111.168")).css("track")
+      def fetch_track_list(url, http_proxy)
+        Nokogiri::XML(open(url, proxy: http_proxy)).css("track")
       end
 
       def make_dst(dst)

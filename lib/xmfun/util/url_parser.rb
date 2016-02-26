@@ -22,6 +22,7 @@ module Xmfun
 
       def self.uri?(uri)
         uri =~ /\A#{URI::regexp(['http', 'https'])}\z/
+        $&
       end
     end
   end
