@@ -19,3 +19,6 @@ notifications:
     on_failure: always  # options: [always|never|change] default: always
     on_start: false     # default: false
 script: CODECLIMATE_REPO_TOKEN=d819a1100b1567adf763b9f6b0e1af83dcb59a4bf5c3534748ed32e3bb6818f4 bundle exec rake
+
+addons:
+  srcclr: true
